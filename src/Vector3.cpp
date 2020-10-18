@@ -1,6 +1,5 @@
 #include "Vector3.h"
-
-#include <math.h>
+#include "Math.cpp"
 
 using namespace BreathEngine;
 
@@ -30,7 +29,7 @@ Vector3::~Vector3()
 /* Public methods */
 inline const BR_FLOAT Vector3::Magnitude()
 {
-	return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
+	return BreathEngine::Sqrt(powf(x, 2) + powf(y, 2) + powf(z, 2));
 }
 
 inline const Vector3 Vector3::Normalized()
@@ -45,7 +44,29 @@ inline const Vector3 Vector3::SqrMagnitude()
 	return _norm * _norm;
 }
 
-/* BR_FLOAT methods */
+/* Static methods */
+const Vector3 Vector3::Lerp(Vector3 v1, Vector3 v2, BR_FLOAT factor)
+{
+	BR_FLOAT clampedFactor = BreathEngine::Clamp01(factor);
+	return v1 + ((v2 - v1) / clampedFactor);
+}
+
+const Vector3 Vector3::LerpUnclamped(Vector3 v1, Vector3 v2, BR_FLOAT factor)
+{
+	return v1 + ((v2 - v1) / factor);
+}
+
+const Vector3 Vector3::Max(Vector3 v1, Vector3 v2)
+{
+	return Vector3(BreathEngine::Max(v1.x, v2.x), BreathEngine::Max(v1.y, v2.y), BreathEngine::Max(v1.z, v2.z));
+}
+
+const Vector3 Vector3::Min(Vector3 v1, Vector3 v2)
+{
+	return Vector3(BreathEngine::Min(v1.x, v2.x), BreathEngine::Min(v1.y, v2.y), BreathEngine::Min(v1.z, v2.z));
+}
+
+
 const float Vector3::Angle(Vector3 v1, Vector3 v2)
 {
 	BR_FLOAT _dot = Dot( v1.Normalized(), v2.Normalized() );
@@ -75,7 +96,7 @@ const BR_FLOAT Vector3::Distance(Vector3 v1, Vector3 v2)
 }
 
 /* Operator overloading */
-BR_FLOAT Vector3::operator[](int pos)
+BR_FLOAT Vector3::operator[](BR_INT pos)
 {
 	switch (pos)
 	{
@@ -88,22 +109,42 @@ BR_FLOAT Vector3::operator[](int pos)
 	}
 }
 
-Vector3 Vector3::operator+(Vector3& v1)
+Vector3 Vector3::operator+(Vector3 v1)
 {
 	return Vector3(x + v1.x, y + v1.y, z + v1.z);
 }
 
-Vector3 Vector3::operator-(Vector3& v1)
+Vector3 Vector3::operator-(Vector3 v1)
 {
 	return Vector3(x - v1.x, y - v1.y, z - v1.z);
 }
 
-Vector3 Vector3::operator*(Vector3& v1)
+Vector3 Vector3::operator*(Vector3 v1)
 {
 	return Vector3(x * v1.x, y * v1.y, z * v1.z);
 }
 
-Vector3 Vector3::operator/(Vector3& v1)
+Vector3 Vector3::operator/(Vector3 v1)
 {
 	return Vector3(x / v1.x, y / v1.y, z / v1.z);
+}
+
+Vector3 Vector3::operator+(BR_FLOAT v1)
+{
+	return Vector3(x + v1, y + v1, z + v1);
+}
+
+Vector3 Vector3::operator-(BR_FLOAT v1)
+{
+	return Vector3(x - v1, y - v1, z - v1);
+}
+
+Vector3 Vector3::operator*(BR_FLOAT v1)
+{
+	return Vector3(x * v1, y * v1, z * v1);
+}
+
+Vector3 Vector3::operator/(BR_FLOAT v1)
+{
+	return Vector3(x / v1, y / v1, z / v1);
 }

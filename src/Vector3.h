@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Typedefs.h"
+#include "./Vector2.h"
 
 namespace BreathEngine
 {
@@ -19,11 +20,11 @@ namespace BreathEngine
 
 		/* Properties */
 		BR_FLOAT x, y, z;
-		// TODO: [0], [1], [2] postional accessors
 
 		/* Constructors */
 		Vector3(BR_FLOAT x, BR_FLOAT y, BR_FLOAT z);
-		// TODO: Vector2 based constructors
+		Vector3(Vector2 xy, BR_FLOAT z) : x(xy.x), y(xy.y), z(z) {};
+		Vector3(BR_FLOAT x, Vector2 yz) : x(x), y(yz.x), z(yz.y) {};
 		~Vector3();
 
 
@@ -39,8 +40,8 @@ namespace BreathEngine
 		const static BR_FLOAT Dot(Vector3 v1, Vector3 v2);
 		const static BR_FLOAT Distance(Vector3 from, Vector3 to);
 
-		// TODO: Lerp
-		// TODO: Lerp unclamped
+		const static Vector3 Lerp(Vector3 v1, Vector3 v2, BR_FLOAT factor);
+		const static Vector3 LerpUnclamped(Vector3 v1, Vector3 v2, BR_FLOAT factor);
 		const static Vector3 Max(Vector3 v1, Vector3 v2);
 		const static Vector3 Min(Vector3 v1, Vector3 v2);
 		// TODO: Move towards
@@ -48,10 +49,15 @@ namespace BreathEngine
 
 		/* Operator overloading */
 		BR_FLOAT operator[](BR_INT);
-		Vector3 operator+(Vector3& v1);
-		Vector3 operator-(Vector3& v1);
-		Vector3 operator*(Vector3& v1);
-		Vector3 operator/(Vector3& v1);
+		Vector3 operator+(Vector3 v);
+		Vector3 operator-(Vector3 v);
+		Vector3 operator*(Vector3 v);
+		Vector3 operator/(Vector3 v);
+
+		Vector3 operator+(BR_FLOAT v);
+		Vector3 operator-(BR_FLOAT v);
+		Vector3 operator*(BR_FLOAT v);
+		Vector3 operator/(BR_FLOAT v);
 	};
 
 };

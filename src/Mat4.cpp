@@ -109,8 +109,8 @@ Mat4 Mat4::CreateView(Vector3 forward, Vector3 up, Vector3 right, Vector3 positi
 Mat4 Mat4::CreatePerspectiveProjection(BR_FLOAT width, BR_FLOAT height, BR_FLOAT fov, BR_FLOAT nearPlane, BR_FLOAT farPlane)
 {
 	Mat4 newMatrix = Mat4();
-	newMatrix.mElements[0] = (1.0f / std::tan((fov * BR_PI / 180.0f) / 2.0f)) / (width / height);
-	newMatrix.mElements[5] = 1.0f / std::tan((fov * BR_PI / 180.0f) / 2.0f);
+	newMatrix.mElements[0] = (1.0f / std::tan((fov * PI / 180.0f) / 2.0f)) / (width / height);
+	newMatrix.mElements[5] = 1.0f / std::tan((fov * PI / 180.0f) / 2.0f);
 	newMatrix.mElements[10] = (farPlane + nearPlane) / (nearPlane - farPlane);
 	newMatrix.mElements[11] = (2.0f * farPlane * nearPlane) / (nearPlane - farPlane);
 	newMatrix.mElements[14] = -1.0f;

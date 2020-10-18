@@ -1,11 +1,17 @@
 /* Type definitions */
+
 #define BR_UINT unsigned int
 #define BR_INT int
 #define BR_FLOAT float
 #define BR_DOUBLE double
 #define BR_STRING char*
+#define BR_BOOLEAN bool
 
-#define BR_PI 3.14159265359
+#define PI 3.14159265358979f
+#define Rad2Deg (360 / (3.14159265358979f * 2))
+#define Deg2Rad ((3.14159265358979f * 2) / 360)
+#define Infinity INFINITY
+#define NegativeInfinity -INFINITY
 
 /* Error definitions */
 #ifndef BR_ERROR

@@ -1,2 +1,4 @@
-﻿  brMath.cpp
+﻿  Mat4.cpp
+c:\users\windows 10\desktop\brmath\brmath\src\mat4.cpp(112): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\windows 10\desktop\brmath\brmath\src\mat4.cpp(113): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   brMath.vcxproj -> C:\Users\Windows 10\Desktop\brMath\brMath\Debug\brMath.exe

@@ -152,10 +152,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="brMath.cpp" />
+    <ClCompile Include="src\Mat4.cpp" />
     <ClCompile Include="src\Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="brMath.h" />
+    <ClInclude Include="src\Mat4.h" />
+    <ClInclude Include="Typedefs.h" />
     <ClInclude Include="src\Vector3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

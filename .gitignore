@@ -1,0 +1,11 @@
+*.o
+*.db
+*.vcxproj
+*.filters
+*.user
+*.sln
+*.vcxproj.filters
+*.vcxproj.user
+/bin
+/Debug
+/Release
